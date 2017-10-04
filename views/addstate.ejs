@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stateadd</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<style>
+		form{
+			margin-top: 15px;
+			margin-left: 5px;
+		}
+	</style>
+</head>
+<body>
+<form action="/list" method="post" class="form-inline">
+<label for="">STATEID:</label><input type="number" name="sid" class="form-control">
+<label for="">STATENAME:</label><input type="text" name="sname" class="form-control">
+<label for="">CREATIONDATE:</label><input type="date" name="cdate" class="form-control">
+<label for="">UPDATIONDATE:</label><input type="date" name="udate" class="form-control">
+<input type="submit" class="btn btn-success" value="Add State">
+</form>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.js"></script>
+</body>
+</html>
