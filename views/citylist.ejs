@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>stateadd</title>
+	<title>citylist</title>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
 <table class="table table-striped">
-	<tr style="background-color: grey;">
-	    <th>STATEID</th>
-		<th>STATENAME</th>
+	<tr style="background-color: silver;">
+		<th>CITYID</th>
+		<th>CITYNAME</th>
+		<th>STATEID</th>
 		<th>CREATIONDATE</th>
 		<th>UPDATIONDATE</th>
 		<th><a href="/" style="color: white;
@@ -20,15 +21,23 @@
 	</tr>
 	<% for(var i=0; i < data.length; i++) {%>
 	<tr>
+		<td><%= data[i].CITYID %></td>
+		<td><%= data[i].CITYNAME %></td>
 		<td><%= data[i].STATEID %></td>
-		<td><%= data[i].STATENAME %></td>
 		<td><%= data[i].CREATIONDATE %></td>
 		<td><%= data[i].UPDATIONDATE %></td>
-		<td><a href="/edit?stateid=<%= data[i].STATEID %>" data-toggle="tooltip" title="edit" id="edit"><span class="glyphicon glyphicon-edit">Edit</span></a></td>
-		<td><a href="/delete?stateid=<%= data[i].STATEID %>" data-toggle="tooltip" title="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+		<td><a href="/cityedit?stateid=<%= data[i].CITYID %>" data-toggle="tooltip" title="edit" id="edit"><span class="glyphicon glyphicon-edit">Edit</span></a></td>
+		<td><a href="/citydelete?stateid=<%= data[i].CITYID %>" data-toggle="tooltip" title="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
 	</tr>
 	<% } %>
 </table>
+<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+		$('[data-toggle="tooltip"]').tooltip();
+
+	});
+</script>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.js"></script>
 </body>

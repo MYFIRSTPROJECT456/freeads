@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	</head>
+<body>
+<table class="table table-striped">
+<tr>
+	<th>
+		<td>STATEID</td>
+		<td>STATENAME</td>
+		<td>CREATIONDATE</td>
+		<td>UPDATIONDATE</td>
+	</th>
+</tr>
+<% for(var i=0; i< data.length; i++) {%>
+<tr>
+	<td><%= data[i].STATEID %></td>
+	<td><%= data[i].STATENAME %></td>
+	<td><%= data[i].CREATIONDATE %></td>
+	<td><%= data[i].UPDATIONDATE %></td>
+</tr>
+<% } %>
+</table>	
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstarp.js"></script>
+</body>
+</html>

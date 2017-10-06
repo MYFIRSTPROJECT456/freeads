@@ -22,7 +22,7 @@ var adsdata = {
 
 	
     updateState: function(inputData, cb){
-        var sql = "update state SET STATENAME='"+inputData.sname+"', CREATIONDATE='"+inputData.cdate+"', UPDATIONDATE='"+inputData.udate+"' WHERE id="+id;
+        var sql = "update state SET STATENAME='"+inputData.sname+"', CREATIONDATE='"+inputData.cdate+"', UPDATIONDATE='"+inputData.udate+"' WHERE id="+sid;
         pool.getConnection(function(error, connection){
             if (error) {
                 console.log('connection error'+error);
@@ -39,8 +39,8 @@ var adsdata = {
             }
         });
     },
-
-    listState: function(){
+// all database list
+    listState: function(cb){
         var sql = "select * from state";
         pool.getConnection(function(error, connection){
             if (error) {
@@ -60,8 +60,26 @@ var adsdata = {
                 
             });
         },
+    cityList:function(cb){
+            var sql = "select * from city";
+            pool.getConnection(function(error, connection){
+                if (error) {
+                    console.log("connection error"+error);
+                }
+                else{
+                    connection.query(sql, function(error, result){
+                        if (error) {
+                            cb(error, null);
+                        }
+                        else{
+                            cb(null, result);
+                        }
+                    });
+                }
+            });
+        },    
 
-    getStateById:function(id, cb){
+    getStateById:function(sid, cb){
         var sql ="select * from state where id"+sid;
         pool.getConnection(function(error, connection){
             if (error) {
@@ -81,6 +99,42 @@ var adsdata = {
     });
 
     },
+    deleteState:function(sid, cb){
+        var sql = "delete from state where id="+sid;
+        pool.getConnection(function(error, connection){
+            if (error) {
+                console.log('connection error'+error);
+            }
+            else{
+                connection.query(function(error, result){
+                    if (error) {
+                        cb(error, null);
+                    }
+                    else{
+                        cb(null, result);
+                    }
+                });
+            }
+        });
+    },
+    cityAdd: function(inputData, cb){
+        var sql = "INSERT INTO city (CITYID, CITYNAME, STATEID, CREATIONDATE, UPDATIONDATE)values("+inputData.cid+",'"+inputData.cname+"',"+inputData.sid+",'"+inputData.cdate+"','"+inputData.udate+"')";
+        pool.getConnection(function(error, connection){
+            if (error) {
+                console.log('connection error'+error);
+            }
+            else{
+                connection.query(sql, function(error, result){
+                    if (error) {
+                        cb(error, null);
+                    }
+                    else{
+                        cb(null, result);
+                    }
+                });
+            }
+        });
+    }
 
 }
 
